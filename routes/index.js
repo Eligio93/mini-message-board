@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const {format} = require('date-fns')
 
 const messages = [
   {
     text: "Hi there!",
     user: "Amando",
-    added: new Date()
+    added: format(new Date(), 'E d MMM y k:mm')
   },
   {
     text: "Hello World!",
     user: "Charles",
-    added: new Date()
+    added: format(new Date(), 'E d MMM y k:mm')
   }
 ];
 
@@ -26,7 +27,7 @@ router.get('/new', function(req, res, next) {
 router.post('/new',function(req,res){
   let formAuthor=req.body.author
   let formMessage=req.body.text
-  messages.push({text:formMessage, user:formAuthor, added: new Date()})
+  messages.push({text:formMessage, user:formAuthor, added: format(new Date(), 'E d MMM y k:mm')})
   res.redirect('/');
 })
 
