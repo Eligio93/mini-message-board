@@ -18,5 +18,16 @@ const messages = [
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Mini Message Board', messages:messages });
 });
+/* GET form page */
+router.get('/new', function(req, res, next) {
+  res.render('form');
+});
+/* POST request from form*/
+router.post('/new',function(req,res){
+  let formAuthor=req.body.author
+  let formMessage=req.body.text
+  messages.push({text:formMessage, user:formAuthor, added: new Date()})
+  res.redirect('/');
+})
 
 module.exports = router;
