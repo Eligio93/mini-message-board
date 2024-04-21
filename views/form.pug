@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1='Add your message'
+        form.form(action="/new" method='POST')
+            label.label(for="author-input") Your Name:
+            br
+            input#author-input.input-field(type="text" name='author' placeholder='Adam Smith')
+            br
+            label.label(for="message-input") Your Message: 
+            br
+            textarea#message-input.input-field(type="textarea" name='text' placeholder='Ciao')
+            br
+            button(type='submit')='Submit'
